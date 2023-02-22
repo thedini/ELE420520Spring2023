@@ -2,8 +2,8 @@
 
 import socket
 
-#HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
-HOST = '10.0.0.1'  # Standard loopback interface address (localhost)
+HOST = '127.0.0.1'  # Standard loopback interface address (localhost)
+#HOST = '10.0.0.1'  # Standard loopback interface address (localhost)
 PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
 
 def main():
@@ -19,6 +19,9 @@ def main():
             print('Connected by', addr)
             while True:
                 data = conn.recv(1024)
+                add = bytes("from server", 'utf-8')
+                data = data + add
+                print(data)
                 print('Waiting for data to receive.')
                 if not data:
                     print('An packet without payload is received, end the connection.')

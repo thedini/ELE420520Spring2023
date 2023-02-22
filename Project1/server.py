@@ -4,7 +4,7 @@ import socket
 
 HOST = '10.0.0.1'  # put the ip address of the server here
 #HOST = '127.0.0.1'  # put the ip address of the server here
-PORT = 65432     
+PORT = 65433     
 
 def main():
 
@@ -25,7 +25,9 @@ def main():
                     break
                 else:
                     print('Receiving data from a client.')
-
+                    add = bytes("from server ", 'utf-8')
+                    data = data + add
+                conn.sendall(data)
                 # TODO: append the data with bytes ' from server' and send the concacatenated bytes
                 
 
